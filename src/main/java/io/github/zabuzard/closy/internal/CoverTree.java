@@ -39,6 +39,10 @@ public final class CoverTree<E> implements NearestNeighborComputation<E> {
 	 */
 	private static final int DEFAULT_MIN_NUM_LEVELS = -500;
 
+	private CoverTree()
+	{
+	}
+
 	/**
 	 * Utility method to create a new list instance. Can be used to exchange the
 	 * list type used by the tree.
@@ -54,43 +58,52 @@ public final class CoverTree<E> implements NearestNeighborComputation<E> {
 	/**
 	 * Lock used for synchronization.
 	 */
-	private final Object lock = new Object();
+	private transient Object lock = new Object();
+
 	/**
 	 * The base of the tree.
 	 */
-	private final double base;
+	private double base;
+
 	/**
 	 * The metric to use for determining distance between elements.
 	 */
-	private final Metric<? super E> metric;
+	private Metric<? super E> metric;
+
 	/**
 	 * The current number of levels of the tree.
 	 */
-	private final int[] numLevels;
+	private int[] numLevels;
+
 	/**
 	 * The current maximal level of the tree.
 	 */
 	@SuppressWarnings("FieldAccessedSynchronizedAndUnsynchronized")
 	private int maxLevel;
+
 	/**
 	 * The maximal minimum level of the tree.
 	 */
 	@SuppressWarnings("FieldAccessedSynchronizedAndUnsynchronized")
 	private int maxMinLevel;
+
 	/**
 	 * The maximal amount of levels of the tree.
 	 */
 	private int maxNumLevels = CoverTree.DEFAULT_MAX_NUM_LEVELS;
+
 	/**
 	 * The current minimal level of the tree.
 	 */
 	@SuppressWarnings("FieldAccessedSynchronizedAndUnsynchronized")
 	private int minLevel;
+
 	/**
 	 * The minimum number of levels of the tree.
 	 */
 	@SuppressWarnings("FieldAccessedSynchronizedAndUnsynchronized")
 	private int minNumLevels = CoverTree.DEFAULT_MIN_NUM_LEVELS;
+
 	/**
 	 * The root node.
 	 */
