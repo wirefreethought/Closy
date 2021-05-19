@@ -13,19 +13,27 @@ import java.util.Objects;
  * @author Nils Loehndorf
  * @author Daniel Tischner {@literal <zabuza.dev@gmail.com>}
  */
-final class Node<E> implements Comparable<Node<E>> {
+public final class Node<E> implements Comparable<Node<E>> {
+
+    private Node()
+    {
+    }
+
 	/**
 	 * The children of the node.
 	 */
-	private final List<Node<E>> children;
+	private List<Node<E>> children;
+
 	/**
 	 * The element contained in the node.
 	 */
-	private final E element;
+	private E element;
+
 	/**
 	 * The current distance of the node.
 	 */
 	private double distance;
+
 	/**
 	 * The parent of the node.
 	 */
@@ -164,5 +172,4 @@ final class Node<E> implements Comparable<Node<E>> {
 	void setParent(final Node<E> parent) {
 		this.parent = parent;
 	}
-
 }
