@@ -102,6 +102,10 @@ public final class Node<E> implements Comparable<Node<E>> {
 	 */
 	List<Node<E>> getChildren() {
 		if (children.isEmpty()) {
+		    // In case unserialization replaces empty list with an unmodifiable list, ensure children is modifiable.
+		    if (!(children instanceof ArrayList)) {
+		       children = new ArrayList<>();
+		    }
 			final Node<E> child = new Node<>(this, element);
 			addChild(child);
 		}
