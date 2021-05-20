@@ -22,7 +22,7 @@ public final class Node<E> implements Comparable<Node<E>> {
 	/**
 	 * The children of the node.
 	 */
-	private List<Node<E>> children;
+	private List<Node<E>> children = new ArrayList<>();
 
 	/**
 	 * The element contained in the node.
@@ -48,7 +48,6 @@ public final class Node<E> implements Comparable<Node<E>> {
 	Node(final Node<E> parent, final E element) {
 		this.parent = parent;
 		this.element = element;
-		children = new ArrayList<>();
 	}
 
 	/**
